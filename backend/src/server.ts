@@ -8,7 +8,7 @@ import { PORT } from './constants/env.constants';
 const port: number = parseInt(PORT || '3000');
 
 app.listen(port, async () => {
-    initializeCrons();
+    // initializeCrons();
     console.log('-----------------------------------');
     await migration.up();
     await migration.status();

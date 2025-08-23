@@ -1,10 +1,13 @@
-import { RowDataPacket } from 'mysql2';
-
 type Event = {
-    id: number;
-    username: string;
-    email: string;
-    password: string;
-} & RowDataPacket;
+    eventId: number;
+    title: string;
+    description: string;
+    featured: boolean;
+    location: string;
+    eventTime: string;
+    imageURL?: string;
+    createdAt?: string;
+    updatedAt?: string;
+};
 
 export default Event;

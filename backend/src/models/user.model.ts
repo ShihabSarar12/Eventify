@@ -1,10 +1,12 @@
-import { RowDataPacket } from 'mysql2';
-
 type User = {
-    id: number;
-    username: string;
+    userId: number;
     email: string;
     password: string;
-} & RowDataPacket;
+    firstName: string;
+    lastName: string;
+    role: 'student' | 'admin';
+    createdAt: string;
+    updatedAt: string;
+};
 
 export default User;

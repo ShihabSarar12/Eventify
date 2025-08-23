@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import logger from '../utilities/logger.utility';
 import HttpStatus from '../constants/status.constant';
 import { NODE_ENV } from '../constants/env.constants';
+import ApiError from './apiError.middleware';
 
 class ErrorMiddleware {
     constructor() {}
@@ -14,6 +15,12 @@ class ErrorMiddleware {
     ): Response => {
         logger.error(err.stack);
         logger.error('An error occurred. ', err.message);
+        if (err instanceof ApiError) {
+            return res.status(err.statusCode).json({
+                message: err.message,
+                ...(NODE_ENV !== 'production' && { error: err.stack }),
+            });
+        }
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
             message: 'An unexpected error occurred.',
             ...(NODE_ENV !== 'production' && {

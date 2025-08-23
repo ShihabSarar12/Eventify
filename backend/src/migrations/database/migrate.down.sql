@@ -1,2 +1,4 @@
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS peoples;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS registrations;
+DROP TABLE IF EXISTS eventCategories;
