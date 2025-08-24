@@ -12,6 +12,9 @@ const {
     URL,
     API_URL,
     PRIVATE_KEY,
+    JWT_SECRET,
+    JWT_REFRESH_SECRET,
+    SALT_ROUNDS,
 } = process.env;
 
 export {
@@ -24,4 +27,7 @@ export {
     URL,
     API_URL,
     PRIVATE_KEY,
+    JWT_SECRET,
+    JWT_REFRESH_SECRET,
+    SALT_ROUNDS,
 };

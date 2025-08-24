@@ -177,7 +177,28 @@ class AdminRepository {
                 e.clubId;`,
             [userId]
         );
-        return stats;
+
+        const [[{ noOfUpcomingEvents }]]: any = await pool.query(
+            `SELECT
+                COUNT(*) AS noOfUpcomingEvents
+            FROM
+                events e
+            JOIN
+                memberships m ON e.clubId = m.clubId
+            JOIN
+                users u ON m.userId = u.userId
+            WHERE
+                e.eventTime > NOW()
+                AND u.userId = ?
+                AND u.role = 'admin'
+            GROUP BY
+                e.clubId;`,
+            [userId]
+        );
+        return {
+            ...stats,
+            noOfUpcomingEvents,
+        };
     };
 }
 

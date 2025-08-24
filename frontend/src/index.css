@@ -5,9 +5,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* Prefer dark-friendly defaults while letting components override */
+  color-scheme: dark light;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* no global background to let animated Bg show through */
+  /* background-color: transparent; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,28 +17,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Links: subtle brand on dark, stronger hover */
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #8ea2ff;           /* softer blue for dark bg */
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #a7b6ff;           /* slightly brighter on hover */
 }
 
-body {
+/* Layout root: no forced background/layout that could hide Bg */
+html, body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  background: transparent;  /* ensure Bg is visible */
 }
 
+/* Headings stay as-is (Tailwind handles most heading styling) */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Global button baseline: transparent by default so Tailwind classes take over */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -44,27 +50,32 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent; /* keep transparent so component classes control color */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.2s, color 0.2s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #bbbefa;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* Light scheme adjustments (only when user’s OS prefers light) */
+@media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    /* still no global background so app Bg or components decide */
+    /* background-color: #ffffff; */
   }
   a:hover {
-    color: #747bff;
+    color: #2b34e7;
   }
+  /* Keep buttons neutral; component classes still override */
   button {
-    background-color: #f9f9f9;
+    background-color: transparent;
+    color: inherit;
   }
 }
+

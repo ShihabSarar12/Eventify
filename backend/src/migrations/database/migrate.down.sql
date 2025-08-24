@@ -3,4 +3,5 @@ DROP TABLE IF EXISTS eventCategories;
 DROP TABLE IF EXISTS registrations;
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS clubs;
+DROP TABLE IF EXISTS refreshTokens;
 DROP TABLE IF EXISTS users;

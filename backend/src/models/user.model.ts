@@ -1,12 +1,12 @@
 type User = {
-    userId: number;
+    userId?: number;
     email: string;
-    password: string;
+    password?: string;
     firstName: string;
     lastName: string;
-    role: 'student' | 'admin';
-    createdAt: string | Date;
-    updatedAt: string | Date;
+    role?: 'student' | 'admin';
+    createdAt?: string | Date;
+    updatedAt?: string | Date;
 };
 
 export default User;
