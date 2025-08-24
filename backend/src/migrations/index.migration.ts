@@ -29,8 +29,8 @@ class Migration {
             await connection.beginTransaction();
             for (const statement of sql) {
                 await connection.query(statement);
-                await connection.commit();
             }
+            await connection.commit();
             logger.info('Migration up executed successfully');
             connection.release();
         } catch (error) {
@@ -57,8 +57,8 @@ class Migration {
             await connection.beginTransaction();
             for (const statement of sql) {
                 await connection.query(statement);
-                await connection.commit();
             }
+            await connection.commit();
             logger.info('Migration down executed successfully');
             connection.release();
         } catch (error) {

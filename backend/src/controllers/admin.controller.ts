@@ -35,12 +35,28 @@ class AdminController {
 
     public getAllAttendees = asyncHandler(
         async (req: Request, res: Response) => {
-            const attendees = await adminService.getAllAttendees();
+            const userId: number = parseInt(req.body.userId as string);
+            if (isNaN(userId)) {
+                res.status(HttpStatus.BAD_REQUEST).json({
+                    message: 'Invalid userId',
+                });
+                return;
+            }
+
+            const attendees = await adminService.getAllAttendees(userId);
             res.status(HttpStatus.OK).json({
                 data: attendees,
             });
         }
     );
+
+    public getStats = asyncHandler(async (req: Request, res: Response) => {
+        const userId: number = parseInt(req.body.userId as string);
+        const stats = await adminService.getStats(userId);
+        res.status(HttpStatus.OK).json({
+            data: stats,
+        });
+    });
 }
 
 export default new AdminController();

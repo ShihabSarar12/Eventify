@@ -5,8 +5,8 @@ type User = {
     firstName: string;
     lastName: string;
     role: 'student' | 'admin';
-    createdAt: string;
-    updatedAt: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
 };
 
 export default User;

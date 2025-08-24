@@ -15,7 +15,9 @@ const IsDateTime = (validationOptions?: ValidationOptions) => {
             validator: {
                 validate: (value: any, args: ValidationArguments): boolean => {
                     return (
-                        typeof value === 'string' && Regex.DateTime.test(value)
+                        typeof value === 'string' &&
+                        Regex.DateTime.test(value) &&
+                        !isNaN(Date.parse(value))
                     );
                 },
                 defaultMessage: (args: ValidationArguments): string => {

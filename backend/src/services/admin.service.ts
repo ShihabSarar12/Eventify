@@ -54,12 +54,20 @@ class AdminService {
         };
     };
 
-    public getAllAttendees = async () => {
-        const attendees = await adminRepository.getAllAttendees();
+    public getAllAttendees = async (userId: number) => {
+        const attendees = await adminRepository.getAllAttendees(userId);
         if (attendees.length === 0) {
             throw new ApiError(HttpStatus.NOT_FOUND, 'No attendees found');
         }
         return attendees;
+    };
+
+    public getStats = async (userId: number) => {
+        const stats = await adminRepository.getStats(userId);
+        if (!stats) {
+            throw new ApiError(HttpStatus.NOT_FOUND, 'No stats found');
+        }
+        return stats;
     };
 }
 

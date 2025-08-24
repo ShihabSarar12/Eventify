@@ -4,10 +4,11 @@ type Event = {
     description: string;
     featured: boolean;
     location: string;
-    eventTime: string;
+    eventTime: string | Date;
     imageURL?: string;
-    createdAt?: string;
-    updatedAt?: string;
+    createdAt?: string | Date;
+    updatedAt?: string | Date;
+    clubId: number;
 };
 
 export default Event;
